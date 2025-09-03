@@ -1,7 +1,7 @@
 """
 Input: folder with all the the radars measurements
 Procedure: Parsing the data for all the radars seperatly. 16, 18 , 68 logic is from Texas and 14 is different
-Output: Csv for each radar, with detected objects (x, y, z, azimut, elevation, dopppler, snr, noise)
+Output: Csv for each radar, with detected objects (x, y, z, dopppler, snr)
 """
 
 # import the required Python packages
@@ -127,7 +127,6 @@ def find_bin_file_in_folder_14(folder_path):
 TC_PASS   =  0
 TC_FAIL   =  1
 
-script_path = r"path/to/simple14parse_v2_incode_calling.py"
 def getUint32(data):
     """!
        This function coverts 4 bytes to a 32-bit unsigned integer.
