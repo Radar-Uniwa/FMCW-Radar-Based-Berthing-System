@@ -18,7 +18,7 @@ from sklearn.metrics import (
 
 # ─── CONFIG ─────────────────────────────────────────────────────────────────────
 BASE           = r"path/to/folder"  # adjust to your root folder
-SETS           = ["Training_2", "Validation_2", "Test_2"] # Adjust as needed based on the names
+SETS           = ["Training", "Validation", "Test"] # Adjust as needed based on the names
 FEATURE_SUBDIR = "features"
 SCALER_OUT     = os.path.join(BASE, "name_of_scaler.pkl")# abjust based on the name of scaler
 MODEL_OUT      = os.path.join(BASE, "name_of_model.pkl")# abjust based on the name of scaler
@@ -42,7 +42,7 @@ for split, df in data.items():
     X[split] = df.drop(columns=["Frame_ID", "Tracking_ID", "Dock_Label", "X", "Y", "Z"])
 
 # ─── 3) SCALE ───────────────────────────────────────────────────────────────────
-scaler = StandardScaler().fit(X["Training_2"])
+scaler = StandardScaler().fit(X["Training"])
 joblib.dump(scaler, SCALER_OUT)
 print(f"✅ Scaler saved to {SCALER_OUT}")
 
@@ -57,7 +57,7 @@ clf = RandomForestClassifier(
     random_state=42,
     n_jobs=-1
 )
-clf.fit(X_train, y["Training_2"])
+clf.fit(X_train, y["Training"])
 joblib.dump(clf, MODEL_OUT)
 print(f"✅ Model saved to {MODEL_OUT}")
 
@@ -67,8 +67,8 @@ test_pred = clf.predict(X_test)
 
 # ─── 6) PRINT BASIC METRICS ─────────────────────────────────────────────────────
 print("\n=== Validation Metrics ===")
-print("Accuracy:", accuracy_score(y["Validation_2"], val_pred))
-print(classification_report(y["Validation_2"], val_pred,
+print("Accuracy:", accuracy_score(y["Validation"], val_pred))
+print(classification_report(y["Validation"], val_pred,
                             target_names=["No Dock", "Dock"]))
 
 print("\n=== Test Metrics ===")
@@ -78,8 +78,8 @@ print(classification_report(y["Test_2"], test_pred,
 
 # ─── 7) CONFUSION MATRICES AS HEATMAPS WITH DYNAMIC TEXT COLORS ───────────────
 for split, true, pred in [
-    ("Validation_2", y["Validation_2"], val_pred),
-    ("Test_2",       y["Test_2"],       test_pred)
+    ("Validation", y["Validation"], val_pred),
+    ("Test",       y["Test"],       test_pred)
 ]:
     cm = confusion_matrix(true, pred)
     fig, ax = plt.subplots(figsize=(5, 4))
@@ -137,7 +137,7 @@ plt.tight_layout()
 plt.show()
 
 # ─── FEATURE IMPORTANCES (HORIZONTAL BAR) ───────────────────────────────────
-feature_names = X["Training_2"].columns.tolist()
+feature_names = X["Training"].columns.tolist()
 importances   = clf.feature_importances_
 feat_series   = pd.Series(importances, index=feature_names)
 
