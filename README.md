@@ -3,7 +3,9 @@ This repository contains the Python code developed for the Radar-Based Berthing 
 The radars that were used were the AWR1443BOOST, AWR1642BOOST, AWR1843BOOST and IWR6843ISK from Texas Instruments. The implementation included a Raspberry Pi 4 and a supportive subsystem for measurements at the field, a Ro/Ro Pax ferry which was operating normaly. 
 More about our system can be found here https://ieeexplore.ieee.org/document/11083964. 
 
-FMCW-Radar-Based-Berthing-System/
+## 📂 Repository Structure
+
+```FMCW-Radar-Based-Berthing-System/
 │
 ├── Preprocessing/               # Scripts for preparing raw radar data
 │   ├── annotation.py             # Annotation tool for labeling clusters
@@ -29,3 +31,5 @@ FMCW-Radar-Based-Berthing-System/
 │
 ├── LICENSE                      # License file
 └── README.md                    # Project documentation
+
+```
