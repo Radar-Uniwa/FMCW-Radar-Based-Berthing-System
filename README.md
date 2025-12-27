@@ -8,7 +8,7 @@ More details about the system can be found in our publication: https://ieeexplor
 
 ```FMCW-Radar-Based-Berthing-System/
 │
-├── Preprocessing/               # Scripts for preparing raw radar data
+├── Preprocessing/                # Scripts for preparing raw radar data
 │   ├── annotation.py             # Annotation tool for labeling clusters
 │   ├── bin2csv_synchronized.py   # Convert binary radar data to synchronized CSV
 │   ├── dbscan_kalman_log.py      # Run DBSCAN + Kalman and log results
@@ -16,13 +16,13 @@ More details about the system can be found in our publication: https://ieeexplor
 │   ├── preprocess_feature.py     # Feature-based preprocessing
 │   └── preprocess_gnn.py         # GNN-specific preprocessing
 │
-├── Training/                    # Model training scripts
+├── Training/                     # Model training scripts
 │   ├── train_gnn.py              # Train Graph Neural Network
 │   ├── train_pointnet.py         # Train PointNet model
 │   ├── train_xgboost.py          # Train XGBoost classifier
 │   └── training_with_features.py # Train Random Forest and other feature-based models
 │
-├── Feature_Importance/          # Feature analysis
+├── Feature_Importance/           # Feature analysis
 │   ├── feature_importance_xgboost.py # Feature importance via XGBoost
 │   └── features_importance_rf.py     # Feature importance via Random Forest
 │
